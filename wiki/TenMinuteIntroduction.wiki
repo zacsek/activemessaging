@@ -1,0 +1,76 @@
+= Ten Minute Introduction =
+
+We create a simple message consumer to receive messages, and a rails web controller that allows you to send a message when you click a button.
+
+View the screencast (10 minutes): http://www.skizz.biz/ActiveMessagingScreencast01.mov
+
+= Steps =
+
+Start ActiveMQ
+
+{{{ 
+bin/activemq 
+}}}
+
+Create the rails application
+
+{{{
+rails demo
+}}}
+
+Add the activemessaging plugin
+
+{{{
+script/plugin install http://dev.tirsen.com/svn/activemessaging/trunk/plugins/activemessaging
+}}}
+
+Create a processor
+
+{{{
+script/generate processor HelloWorld
+}}}
+
+Modify the processor to print the messages onto the console:
+
+{{{
+puts message
+}}}
+
+Add a queue to {{{config/messaging.rb}}}:
+
+{{{
+queue :hello_world, '/queue/HelloWorld'	
+}}}
+
+Create a controller with an index action. We will use this to send our messages
+
+{{{
+script/generate controller SayHelloWorld index
+}}}
+	
+Add the following to the new controller to allow us to access activemessaging
+
+{{{
+require 'activemessaging/processor'
+include ActiveMessaging::MessageSender
+
+publishes_to :hello_world
+}}}
+
+Modify the controller to send a message
+
+{{{
+def say_hello
+  publish :hello_world, "<say>Hello World!</say>"
+end
+}}}
+
+Add a button to send the message
+
+{{{
+<%=button_to "Say Hello", :action=>"say_hello" %>
+}}}
+
+Send a message. Browse to {{{http://localhost:3000/say_hello_world}}} and click the "Say Hello" button.
+
+The Processor logs the message to the console.
