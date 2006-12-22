@@ -1,0 +1,65 @@
+#summary ActiveMessaging
+
+= ActiveMessaging =
+
+!ActiveMessaging is an attempt to bring the simplicity and elegance of rails development to the world of messaging. Messaging, (or event-driven architecture) is widely used for enterprise integration, with frameworks such as Java's JMS, and products such as ActiveMQ, Tibco, IBM MQSeries etc.
+
+{{{
+class HelloWorldProcessor < ActiveMessaging::Processor
+  
+  subscribes_to :hello_world
+  
+  def on_message(message)
+    puts "received: " + message
+  end
+  
+end
+}}}
+
+= Demos =
+
+TenMinuteIntroduction (with Screencast 10 minutes)
+
+TracingMessages (with Screencast 3 minutes)
+
+RunningTheDemoApplication
+
+= Getting Started =
+
+ * [wiki:Installation]
+ * [wiki:Documentation]
+ * ToDo
+
+= Developers =
+
+Source code is available via subversion:
+
+{{{
+svn co http://dev.tirsen.com/svn/activemessaging/trunk
+}}}
+
+= Design discussions =
+
+DesignConstraints
+
+[Naming]
+
+= Support =
+
+Try the public Campfire chat room here:
+
+https://thoughtworks.campfirenow.com/c94cd
+Please provide your full real name.
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
