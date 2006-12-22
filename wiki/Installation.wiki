@@ -1,0 +1,16 @@
+= Installation =
+
+== Prerequisites ==
+
+To develop applications using ActiveMessaging you need the following prerequisites:
+ 1. Ruby on Rails (version 1.1+) 
+ 1. ActiveMq configured with the Stomp listener (or other messaging infrastructure supporting the [wiki:Stomp] protocol)
+ 1. The Ruby [wiki:Stomp] gem
+
+== Installing ==
+
+To install the plugin into your Rails app:
+
+{{{
+script/plugin install http://dev.tirsen.com/svn/activemessaging/trunk/plugins/activemessaging
+}}}
