@@ -73,4 +73,8 @@ Add a button to send the message
 
 Send a message. Browse to {{{http://localhost:3000/say_hello_world}}} and click the "Say Hello" button.
 
+This adds a say action to the queue, which automatically gets created on first request. 
+
+Now, to begin consuming the queue, start the `poller.rb` script.
+
 The Processor logs the message to the console.
