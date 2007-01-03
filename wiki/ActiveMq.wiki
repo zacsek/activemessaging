@@ -23,7 +23,7 @@ cd activemq
 ./activemq
 }}}
 
-You should see this [INSERT SOME LOG HERE]
+You should see this <INSERT SOME LOG HERE>
 
 Start messsage consumers with the following command:
 
