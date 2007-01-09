@@ -7,7 +7,8 @@ This page is a parent for examples of Java integration, as well as a wishlist fo
 = Details =
 
 Integrating with Java Applications:
-  * Using Spring JmsTemplate to send/receieve JMS/Stomp messages from Rails via ActiveMQ (I'll add it to the wiki ASAP - Andrew)
+  * Using Spring JmsTemplate to send/receieve JMS/Stomp messages from Rails via ActiveMQ 
+  * Synchronous messaging between Rails and Java/Spring using queues and correlation id
 
 = Wish Lists =
 
