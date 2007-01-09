@@ -7,6 +7,8 @@ page: [http://www.activemq.org/site/getting-started.html Getting Started with Ac
 
 Use a version 4.1 Snapshot release of ActiveMQ to get Stomp support, and the amazing status web page. Otherwise the AM things refused to work for me (Olle).
 
+You can also use the 4.2 Snapshot, just stay away from anything below 4.1 until we hear a report of this working (Andrew).
+
 The version I used was: apache-activemq-4.1-incubator-SNAPSHOT
 
 Edit {{{conf/activemq.xml}}} and add the following connector, the port number 61613 is important:
@@ -17,13 +19,29 @@ Edit {{{conf/activemq.xml}}} and add the following connector, the port number 61
 </connector>
 }}}
 
+N.B. that in 4.2, this is already present by default, but make sure it is there in case something changes in future releases.
+
+You don't need to configure your queues/topics ahead of use. ActiveMQ creates queues/topics dynamically, so if you are used to some other more configuration happy JMS provider, don't be put off, there is not a step missing here.
+
 Start ActiveMQ 
 {{{
 cd activemq
-./activemq
+./bin/activemq
 }}}
 
 You should see this <INSERT SOME LOG HERE>
+
+If you choose to in have your own config file for activemq (which I suggest), then make a copy of the activemq.xml under the conf directory, like "my-activemq.xml".  Why under conf? The file needs to be on the classpath so activemq can find it, and conf is an obvious place (I actually soft-link my file here from my rails application's conf directory, just to make install simpler and keep everything together.)
+
+Then when starting activemq, specify this file using the following syntax:
+
+Start ActiveMQ 
+{{{
+cd activemq
+./bin/activemq xbean:myamq.xml
+}}}
+
+
 
 Start messsage consumers with the following command:
 
