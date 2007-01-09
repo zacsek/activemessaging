@@ -1,0 +1,20 @@
+One key reason for using ActiveMessaging is integration with the Java platform.
+
+= Introduction =
+
+This page is a parent for examples of Java integration, as well as a wishlist for scenarios or enhancements to integration that people would like to see.
+
+= Details =
+
+Integrating with Java Applications:
+  * Using Spring JmsTemplate to send/receieve JMS/Stomp messages from Rails via ActiveMQ 
+    (I have this working, I'll add it to the wiki ASAP - Andrew)
+
+= Wish Lists =
+
+Scenarios people would like to see how to:
+  * Using YAML as a messaging format between Rails and Java
+  * Using JRuby Spring managed beans to communicate with ActiveMessaging
+
+Enhancements to ActiveMessaging for Java integration:
+  * JMS Adapter, rather than Stomp, for ActiveMessaging
