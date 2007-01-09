@@ -41,6 +41,7 @@ cd activemq
 
 You should see this:
 {{{
+[11:06:11][akuklewicz][/usr/local/activemq]> sudo ./bin/activemq
 ACTIVEMQ_HOME: /usr/local/activemq
 ACTIVEMQ_BASE: /usr/local/activemq
 Loading message broker from: xbean:activemq.xml
@@ -53,16 +54,17 @@ INFO  DefaultDatabaseLocker          - Attempting to acquire the exclusive lock 
 INFO  DefaultDatabaseLocker          - Becoming the master on dataSource: org.apache.derby.jdbc.EmbeddedDataSource@b2f811
 INFO  JournalPersistenceAdapter      - Journal Recovery Started from: Active Journal: using 5 x 20.0 Megs at: /usr/local/apache-activemq-4.2-incubator-SNAPSHOT/activemq-data/journal
 INFO  JournalPersistenceAdapter      - Journal Recovered: 0 message(s) in transactions recovered.
-INFO  TransportServerThreadSupport   - Listening for connections at: tcp://prx-andrew.local:61616
+INFO  TransportServerThreadSupport   - Listening for connections at: tcp://yournamehere.local:61616
 INFO  TransportConnector             - Connector openwire Started
-INFO  TransportServerThreadSupport   - Listening for connections at: ssl://prx-andrew.local:61617
+INFO  TransportServerThreadSupport   - Listening for connections at: ssl://yournamehere.local:61617
 INFO  TransportConnector             - Connector ssl Started
-INFO  TransportServerThreadSupport   - Listening for connections at: stomp://prx-andrew.local:61613
+INFO  TransportServerThreadSupport   - Listening for connections at: stomp://yournamehere.local:61613
 INFO  TransportConnector             - Connector stomp Started
 INFO  NetworkConnector               - Network Connector default-nc Started
 INFO  BrokerService                  - ActiveMQ JMS Message Broker (localhost, ID:yournamehere.local-49369-1168358773693-1:0) started
 INFO  TransportConnector             - Connector vm://localhost Started
-INFO  KahaStore                      - Kaha Store successfully deleted data directory activemq-data/localhost/tmp_storage}}}
+INFO  KahaStore                      - Kaha Store successfully deleted data directory activemq-data/localhost/tmp_storage
+}}}
 
 When starting activemq with a customized config file, specify this file using the following syntax (see the ActiveMQ docs for more info):
 {{{
