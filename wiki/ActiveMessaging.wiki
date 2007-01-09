@@ -1,4 +1,4 @@
-#summary ActiveMessaging
+#summary Start Here! - Wiki home for ActiveMessaging
 
 = ActiveMessaging =
 
@@ -32,10 +32,10 @@ RunningTheDemoApplication
 
 = Developers =
 
-Source code is available via subversion:
+[http://code.google.com/p/activemessaging/source Source code] is available via subversion here on google code:
 
 {{{
-svn co http://dev.tirsen.com/svn/activemessaging/trunk
+svn checkout http://activemessaging.googlecode.com/svn/trunk/ activemessaging
 }}}
 
 = Design discussions =
@@ -50,3 +50,5 @@ Try the public Campfire chat room here:
 
 https://thoughtworks.campfirenow.com/c94cd
 Please provide your full real name.
+
+
