@@ -39,9 +39,8 @@ cd activemq
 ./bin/activemq
 }}}
 
-You should see this:
+You should see something like this:
 {{{
-[11:06:11][akuklewicz][/usr/local/activemq]> sudo ./bin/activemq
 ACTIVEMQ_HOME: /usr/local/activemq
 ACTIVEMQ_BASE: /usr/local/activemq
 Loading message broker from: xbean:activemq.xml
