@@ -1,6 +1,9 @@
-= Installing ActiveMq =
+#summary How to install ActiveMQ for Stomp ActiveMessaging
+= Summary =
 
-ActiveMQ is an open source Java JMS message queue. It supports the Stomp protocol, which !ActiveMessaging uses to send and receive messages. We hope to support more protocols soon, but for the moment ActiveMQ is the transport of choice.
+ActiveMQ is an open source Java JMS message queue. It supports the Stomp protocol, which ActiveMessaging uses to send and receive messages. We hope to support more protocols soon, but for the moment ActiveMQ is the transport of choice.
+
+== Get ActiveMQ ==
 
 To get a Stomp-talking ActiveMQ on your developer box, try this  
 page: [http://www.activemq.org/site/getting-started.html Getting Started with ActiveMQ]
@@ -10,6 +13,8 @@ Use a version 4.1 Snapshot release of ActiveMQ to get Stomp support, and the ama
 You can also use the 4.2 Snapshot, just stay away from anything below 4.1 until we hear a report of this working (Andrew).
 
 The version I used was: apache-activemq-4.1-incubator-SNAPSHOT
+
+== Configure ActiveMQ ==
 
 Edit {{{conf/activemq.xml}}} and add the following connector, the port number 61613 is important:
 
@@ -23,25 +28,51 @@ N.B. that in 4.2, this is already present by default, but make sure it is there 
 
 You don't need to configure your queues/topics ahead of use. ActiveMQ creates queues/topics dynamically, so if you are used to some other more configuration happy JMS provider, don't be put off, there is not a step missing here.
 
+If you choose to in have your own config file for activemq (which I suggest), then make a copy of the activemq.xml under the conf directory, like "my-activemq.xml".  Why under conf? The file needs to be on the classpath for activemq to find it, and conf is an obvious place (I actually soft-link my file here from my rails application's conf directory, just to make install simpler and keep everything together).
+
+
+== Start ActiveMQ ==
+
 Start ActiveMQ 
 {{{
 cd activemq
 ./bin/activemq
 }}}
 
-You should see this <INSERT SOME LOG HERE>
-
-If you choose to in have your own config file for activemq (which I suggest), then make a copy of the activemq.xml under the conf directory, like "my-activemq.xml".  Why under conf? The file needs to be on the classpath so activemq can find it, and conf is an obvious place (I actually soft-link my file here from my rails application's conf directory, just to make install simpler and keep everything together.)
-
-Then when starting activemq, specify this file using the following syntax:
-
-Start ActiveMQ 
+You should see this:
 {{{
-cd activemq
+ACTIVEMQ_HOME: /usr/local/activemq
+ACTIVEMQ_BASE: /usr/local/activemq
+Loading message broker from: xbean:activemq.xml
+INFO  BrokerService                  - Using Persistence Adaptor org.apache.activemq.store.journal.JournalPersistenceAdapter@93b59
+INFO  BrokerService                  - ActiveMQ 4.2-incubator-SNAPSHOT JMS Message Broker (localhost) is starting
+INFO  BrokerService                  - For help or more information please see: http://incubator.apache.org/activemq/
+INFO  ManagementContext              - JMX consoles can connect to service:jmx:rmi:///jndi/rmi://localhost:1099/jmxrmi
+INFO  JDBCPersistenceAdapter         - Database driver recognized: [apache_derby_embedded_jdbc_driver]
+INFO  DefaultDatabaseLocker          - Attempting to acquire the exclusive lock to become the Master broker
+INFO  DefaultDatabaseLocker          - Becoming the master on dataSource: org.apache.derby.jdbc.EmbeddedDataSource@b2f811
+INFO  JournalPersistenceAdapter      - Journal Recovery Started from: Active Journal: using 5 x 20.0 Megs at: /usr/local/apache-activemq-4.2-incubator-SNAPSHOT/activemq-data/journal
+INFO  JournalPersistenceAdapter      - Journal Recovered: 0 message(s) in transactions recovered.
+INFO  TransportServerThreadSupport   - Listening for connections at: tcp://prx-andrew.local:61616
+INFO  TransportConnector             - Connector openwire Started
+INFO  TransportServerThreadSupport   - Listening for connections at: ssl://prx-andrew.local:61617
+INFO  TransportConnector             - Connector ssl Started
+INFO  TransportServerThreadSupport   - Listening for connections at: stomp://prx-andrew.local:61613
+INFO  TransportConnector             - Connector stomp Started
+INFO  NetworkConnector               - Network Connector default-nc Started
+INFO  BrokerService                  - ActiveMQ JMS Message Broker (localhost, ID:yournamehere.local-49369-1168358773693-1:0) started
+INFO  TransportConnector             - Connector vm://localhost Started
+INFO  KahaStore                      - Kaha Store successfully deleted data directory activemq-data/localhost/tmp_storage}}}
+
+When starting activemq with a customized config file, specify this file using the following syntax (see the ActiveMQ docs for more info):
+{{{
 ./bin/activemq xbean:myamq.xml
 }}}
 
+When you want to stop it, do the obvious thing, hit CTRL-C.
 
+
+== Start the ActiveMessaging consumers ==
 
 Start messsage consumers with the following command:
 
