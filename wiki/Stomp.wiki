@@ -1,3 +1,4 @@
+#summary Protocol currently supported by ActiveMessaging
 = Stomp =
 
 ActiveMessaging uses this protocol to send and receive messages on ActiveMQ.
