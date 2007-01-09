@@ -1,4 +1,4 @@
-One key reason for using ActiveMessaging is integration with the Java platform.
+#summary ActiveMessaging integration with the Java platform.
 
 = Introduction =
 
