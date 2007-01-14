@@ -86,6 +86,7 @@ This adds a say action to the queue, which automatically gets created on first r
 
 Now, to begin consuming the queue, start the `poller.rb` script by running the rake command:
 {{{
+rake activemessaging:start_consumers
 }}}
 
 The Processor logs the message to the console.
