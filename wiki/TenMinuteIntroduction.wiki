@@ -32,13 +32,20 @@ Create a processor
 script/generate processor HelloWorld
 }}}
 
-Modify the processor to print the messages onto the console:
+Modify the processor to subscribe to a queue:
 
 {{{
-puts message
+class HelloWorldProcessor < ActiveMessaging::Processor
+
+  #add this line below
+  subscribes_to :hello_world
+
+  def on_message(message)
+    puts "received: " + message
+  end
 }}}
 
-Add a queue to {{{config/messaging.rb}}}:
+Add the same queue to {{{config/messaging.rb}}}:
 
 {{{
 queue :hello_world, '/queue/HelloWorld'	
@@ -77,6 +84,8 @@ Send a message. Browse to {{{http://localhost:3000/say_hello_world}}} and click 
 
 This adds a say action to the queue, which automatically gets created on first request. 
 
-Now, to begin consuming the queue, start the `poller.rb` script.
+Now, to begin consuming the queue, start the `poller.rb` script by running the rake command:
+{{{
+}}}
 
 The Processor logs the message to the console.
