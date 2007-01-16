@@ -28,7 +28,7 @@ RunningTheDemoApplication
 
  * [Installation]
  * [Documentation]
- * ToDo
+ * [ToDo]
 
 = Developers =
 
@@ -50,5 +50,4 @@ Try the public Campfire chat room here:
 
 https://thoughtworks.campfirenow.com/c94cd
 Please provide your full real name.
-
 
