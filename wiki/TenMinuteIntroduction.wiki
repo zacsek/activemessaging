@@ -35,15 +35,15 @@ script/generate processor HelloWorld
 This does the following if they don't exist already:
  * add the 'config/messaging.rb' file to map Stomp destinations to symbolic names
  * add the 'app/processor' folder where all prcessors that handle messages go
- * add the 'app/processor/application.rb' ApplicationProcessor class, parent to all processors
+ * add the 'app/processor/application.rb' !ApplicationProcessor class, parent to all processors
 
-For your particular HelloWorld processor:
+For your particular !HelloWorld processor:
  * add the 'app/processor/hello_world_processor.rb'
 
 By default, the processor will be subscribed to a queue ':hello_world'
 
 {{{
-class HelloWorldProcessor < ActiveMessaging::Processor
+class HelloWorldProcessor < ApplicationProcessor
 
   subscribes_to :hello_world
 
