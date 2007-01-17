@@ -23,7 +23,7 @@ rails demo
 Add the activemessaging plugin
 
 {{{
-script/plugin install http://dev.tirsen.com/svn/activemessaging/trunk/plugins/activemessaging
+script/plugin install http://activemessaging.googlecode.com/svn/trunk/plugins/activemessaging
 }}}
 
 Create a processor
@@ -32,12 +32,19 @@ Create a processor
 script/generate processor HelloWorld
 }}}
 
-Modify the processor to subscribe to a queue:
+This does the following if they don't exist already:
+ * add the 'config/messaging.rb' file to map Stomp destinations to symbolic names
+ * add the 'app/processor' folder where all prcessors that handle messages go
+ * add the 'app/processor/application.rb' ApplicationProcessor class, parent to all processors
+
+For your particular HelloWorld processor:
+ * add the 'app/processor/hello_world_processor.rb'
+
+By default, the processor will be subscribed to a queue ':hello_world'
 
 {{{
 class HelloWorldProcessor < ActiveMessaging::Processor
 
-  #add this line below
   subscribes_to :hello_world
 
   def on_message(message)
@@ -47,10 +54,10 @@ class HelloWorldProcessor < ActiveMessaging::Processor
 end
 }}}
 
-Add the same queue to {{{config/messaging.rb}}}:
+If the generator created a new 'config/messaging.rb', it will have by default the queue symbol name to Stomp destination mapping:
 
 {{{
-queue :hello_world, '/queue/HelloWorld'	
+    s.queue :hello_world, '/queue/HelloWorld'
 }}}
 
 Create a controller with an index action. We will use this to send our messages
