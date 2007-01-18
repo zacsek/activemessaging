@@ -48,7 +48,7 @@ For any Processor, when there is an error raised from calling 'on_message', this
 
 The 'app/processor/application.rb' parent processor has a default implementation for the error handling in all processors that logs all exceptions extending from 'StandardError', which is the default for the 'rescue' expression.  All other Exceptions, probably of a severe and unrecoverable nature, are logged and then raised up where they will be raised up to the 'poller.rb' script.
 
-=== poller exception handling ===
+=== Poller script exception handling ===
 
 The 'activemessaging/poller.rb' which is the main script (executed by rake) that loads and runs all the processors, and loops continuously receiving messages has its own exception handling.
 
