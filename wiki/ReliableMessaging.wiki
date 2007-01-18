@@ -46,7 +46,22 @@ Another part of making ActiveMessaging more reliable and fault tolerent is how y
 
 For any Processor, when there is an error raised from calling 'on_message', this exception is passed to the processor's 'on_error' method.
 
-The 'app/processor/application.rb' parent processor has a default implementation for the error handling in all processors that logs all exceptions extending from 'StandardError', which is the default for the 'rescue' expression.  All other Exceptions, probably of a severe and unrecoverable nature, are logged and then raised up where they will be raised up to the 'poller.rb' script.
+The 'app/processor/application.rb' parent processor has a default implementation for the error handling in all processors that logs all exceptions extending from 'StandardError', which is the default for the 'rescue' expression.  All other Exceptions, probably of a severe and unrecoverable nature, are logged and then raised up where they will be raised up to the 'poller.rb' script.  Here is the current 'on_error' impl:
+
+{{{
+  def on_error(err)
+    if (err.kind_of?(StandardError))
+      logger.error "ApplicationProcessor::on_error: #{err.class.name} rescued:\n" + \
+      err.message + "\n" + \
+      "\t" + err.backtrace.join("\n\t")
+    else
+      logger.error "ApplicationProcessor::on_error: #{err.class.name} raised: " + err.message
+      raise err
+    end
+  end
+}}}
+
+If you don't like this, just change it in 'app/processor/application.rb', or override it in each processor class that extends from this if a particular processor has a different need.
 
 === Poller script exception handling ===
 
