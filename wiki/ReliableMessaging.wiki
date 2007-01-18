@@ -1,0 +1,41 @@
+#summary Making ActiveMessaging connection to Stomp reliable
+
+= Introduction =
+
+In it's default mode, when an error occurs while the consumers are running, they raise the exception and halt the execution.  This is very different from how a running WEBrick or mongel instance would behave.
+
+This page is all about how to make the consumers run more reliably, and be more fault tolerant rather than failing fast and hard.
+
+= Details =
+
+== Reliable Stomp Connections ==
+
+The ruby stomp client, from [http://stomp.codehaus.org/Ruby+Client codehaus] already has a built in mechanism to make a connection "reliable".
+
+By reliable it means that if the connection encounters a problem establishing or using a connection to a stomp server, it has retry logic to continue attempting to send a message rather than failing and returning nil or raising an exception.
+
+To turn on the reliable features of the stomp connection, you can add 'connection_configuration' info to the config/messaging.rb.  There are a few properties you can set:
+
+|| *PROPERTY*      || *DEFAULT* || *DESCRIPTION*              ||
+|| :login          || ""        || login to use connecting    ||
+|| :passcode       || ""        || password to use connecting ||
+|| :host           || localhost || name/IP to connect to      ||
+|| :port           || 61613     || port for stomp connection  ||
+|| :reliable       || FALSE     || retry connection           ||
+|| :reconnectDelay || 5         || time between retry         ||
+
+These are set in 'config/messaging.rb' like the following:
+{{{
+ActiveMessaging::Gateway.define do |s|
+  s.queue :hello_world, '/queue/HelloWorld'
+
+  #specify connection configration as a hash
+  s.connection_configuration = {:reliable => true, :reconnectDelay => 3}
+end
+}}}
+
+Setting these properties will cause the stomp connection to retry on failures, and wiat 3 seconds between tries.  One bit of warning, at the moment there is no max number of retries, or maximum time to be taken trying to retry.  This means that if the connection goes bad, the stomp connection will keep trying to reconnect ad infinitem.
+
+
+
+== Exception Handling ==
