@@ -71,4 +71,30 @@ It has a rescue block around the loop to quietly halt when there is an 'Interrup
 
 So change this at your own risk - not unsubscribing cleanly will leave activemq continuing to pass messages to client connections long since halted.
 
-To make this script more reliable, I recommend running it using a daemon script of some type.  We use [http://cr.yp.to/daemontools.html daemon tools].  A possible enhancement to !ActiveMessaging would be to add a daemonized poller - perhaps using the [http://daemons.rubyforge.org ruby daemons library].
+To make this script more reliable, I recommend running it using a daemon script of some type.  We use [http://cr.yp.to/daemontools.html daemon tools], or the script below.
+
+=== Poller daemon ===
+
+Included with the procesor generator is the creation of a 'script/poller' script.
+This script uses the [http://daemons.rubyforge.org ruby daemons library] to turn the poller.rb into a daemon.  Here are the available options:
+{{{
+> ./script/poller -h
+Usage: poller <command> <options> -- <application options>
+
+* where <command> is one of:
+  start         start an instance of the application
+  stop          stop all instances of the application
+  restart       stop all instances and restart them afterwards
+  run           start the application and stay on top
+  zap           set the application to a stopped state
+
+* and where <options> may contain several of the following:
+
+    -t, --ontop                      Stay on top (does not daemonize)
+    -f, --force                      Force operation
+
+Common options:
+    -h, --help                       Show this message
+        --version                    Show version
+}}}
+
