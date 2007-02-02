@@ -37,6 +37,12 @@ end
 Setting these properties will cause the stomp connection to retry on failures, and wiat 3 seconds between tries.  One bit of warning, at the moment there is no max number of retries, or maximum time to be taken trying to retry.  This means that if the connection goes bad, the stomp connection will keep trying to reconnect ad infinitem.
 
 
+== Persistent Stomp Messages ==
+
+Want our messages to ActiveMQ to be around, waiting to be received, even if ActiveMQ goes down? This is all about having durable messages, and there are a few ways to do it.
+
+# set a header on send of {:persistent=>true}
+
 == Exception Handling ==
 
 Another part of making ActiveMessaging more reliable and fault tolerent is how you handle exceptions.  Not everyone wants this to work the same way, but chances are most folks don't want the poller to shut down for every error.  So, in true rails form, there is a pretty useful default behavior, and with a little effort you can extend or change it as you like.
