@@ -41,7 +41,8 @@ Setting these properties will cause the stomp connection to retry on failures, a
 
 Want our messages to ActiveMQ to be around, waiting to be received, even if ActiveMQ goes down? This is all about having durable messages, and there are a few ways to do it.
 
-# set a header on send of {:persistent=>true}
+ # set a header on send of {:persistent=>true}
+
 
 == Exception Handling ==
 
