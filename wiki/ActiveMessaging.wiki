@@ -18,17 +18,13 @@ end
 
 = Demos =
 
-TenMinuteIntroduction
 
-TracingMessages
-
-RunningTheDemoApplication
 
 = Getting Started =
 
- * [Installation]
- * [Documentation]
- * [ToDo]
+ * [Installation] - get ActiveMessaging, stomp, activemq
+ * [TenMinuteIntroduction] - quick intro on sending and receiving
+ * [ReliableMessaging] - more advanced configuration
 
 = Developers =
 
