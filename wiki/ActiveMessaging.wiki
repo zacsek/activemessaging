@@ -18,9 +18,9 @@ end
 
 = Demos =
 
-TenMinuteIntroduction (with Screencast 10 minutes)
+TenMinuteIntroduction
 
-TracingMessages (with Screencast 3 minutes)
+TracingMessages
 
 RunningTheDemoApplication
 
@@ -50,4 +50,3 @@ Try the public Campfire chat room here:
 
 https://thoughtworks.campfirenow.com/c94cd
 Please provide your full real name.
-
