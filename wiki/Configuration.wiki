@@ -35,8 +35,15 @@ Here are the methods available on the 'ActiveMessaging::Gateway' while in the 'd
 *s.queue* ['name', symbol for destination] ['destination', string] ['headers', hash of defaults for send]
     The method is a bit of a misnomer, you use this to define destinations - be they queues or topics or whatever else.  
 
-The 'name' should be a symbol, and is the logical name for this destination that will be used in the code.  
+    'name' should be a symbol, and is the logical name for this destination that will be used in the code.  
 
-The 'destination' string is the actual value for the destination that the broker understands.  
+    'destination' string is the actual value for the destination that the broker understands.  
 
-The 'headers' hash is how you can pass in the default headers that should be applied to each message sent to this destination, can be any pair.  The default includes :persistent => true, even if nothing is specified, in order to make sure messages will be saved by ActiveMQ when sent to a destination.  Other header values mapped to JMS headers are described in the ActiveMQ documentation, http://activemq.apache.org/stomp.html .
+    'headers' hash is how you can pass in the default headers that should be applied to each message sent to this destination, can be any pair.  The default includes :persistent => true, even if nothing is specified, in order to make sure messages will be saved by ActiveMQ when sent to a destination.  Other header values mapped to JMS headers are described in the ActiveMQ documentation, http://activemq.apache.org/stomp.html.
+
+*connection_configuration=* ['connection configuration', hash]
+    You can use this method to override the configuration loaded for the connection in the 'config/broker.yml'.  All the same hash values can be set, the keys should be set as symbols.  You usually won't need this, but it could be useful for some environments, such as loading configuration from the database, or some other external resource.
+
+*processor_group* ['group name'] *[array of processors]
+    A processor group is a way to run the poller to only execute a subset of the processors by passing the name of the group in the poller command line arguments.
+    
