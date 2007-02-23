@@ -67,20 +67,3 @@ When starting activemq with a customized config file, specify this file using th
 }}}
 
 When you want to stop it, do the obvious thing, hit CTRL-C.
-
-
-== Start the ActiveMessaging consumers ==
-
-Start messsage consumers with the following command:
-
-{{{
-rake activemessaging:start_consumers
-}}}
-
-This will start all the Processors in your rails application. If you like, you can open another command prompt and run this command again. This will start more consumers, and the messages will be load balanced across all the running consumers.
-
-Send off some test messages with:
-
-{{{
-ruby script/testsend.rb
-}}}
