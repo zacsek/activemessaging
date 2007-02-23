@@ -44,6 +44,6 @@ Here are the methods available on the 'ActiveMessaging::Gateway' while in the 'd
 *connection_configuration=* ['connection configuration', hash]
     You can use this method to override the configuration loaded for the connection in the 'config/broker.yml'.  All the same hash values can be set, the keys should be set as symbols.  You usually won't need this, but it could be useful for some environments, such as loading configuration from the database, or some other external resource.
 
-*processor_group* ['group name'] *[array of processors]
+*processor_group* ['group name'] ['array of processors']
     A processor group is a way to run the poller to only execute a subset of the processors by passing the name of the group in the poller command line arguments.
     
