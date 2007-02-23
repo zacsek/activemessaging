@@ -1,0 +1,31 @@
+#summary How to configure a13g
+
+The dials to turn, and switches to flip, to make a13g behave the way you want it:
+
+= broker.yml =
+
+When you run the processor generator for the first time, a default 'config/broker.yml' is created.  Its purpose is to configure the message broker connection for each environment, much the same as 'database.yml' for ActiveRecord.  Here are the defaults:
+{{{
+development:
+    adapter: stomp
+    login: ""
+    passcode: ""
+    host: localhost
+    port: 61613
+    reliable: true
+    reconnectDelay: 5
+}}}
+
+Here's what you can do with these options:
+  * 'adapter' - used to select which adapter is used. At the moment, 'stomp' is your only real choice, though some logging and mock adapters will be added soon to aid in testing.
+  * 'login' - set a login to use when connecting to the broker.
+  * 'passcode' - set a passcode to use when connecting to the broker.
+  * 'host' - address of the broker to connect to for both local and remote brokers.
+  * 'port' - port of the broker address to connect to, 61613 seems to be Stomp default, certainly is in ActiveMQ's implementation.
+  * 'reliable' - 'true' or 'false', controls whether or not the connection should try and reconnect when the broker is or becomes unavailable.  If true, will retry until it connects or is stopped.  Should almost always be 'true', except for unit testing perhaps.
+  * 'reconnectDelay' - integer, number of seconds to wait between reconnect attempts, only meaningful when 'reliable' is 'true'.
+
+
+= messaging.rb =
+
+The main place for configuring your messaging environment is 'config/messaging.rb', 
