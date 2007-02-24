@@ -4,15 +4,22 @@
 == Prerequisites ==
 
 To develop applications using ActiveMessaging you need the following prerequisites:
+ #. Message broker that connects with [Stomp]
  #. Ruby on Rails (version 1.1+) 
- #. ActiveMq configured with the Stomp listener (or other messaging infrastructure supporting the [wiki:Stomp] protocol)
- #. The Ruby [Stomp] gem
- #. The Ruby [Daemons] gem
+ #. The Ruby [Stomp] and Daemons gems
 
 == Installing ==
 
-To install the plugin into your Rails app:
+Select from the [http://stomp.codehaus.org/Brokers list of brokers that speak Stomp], the recommended choice is ActiveMQ configured with the Stomp listener.  [http://stomp.codehaus.org/StompConnect StompConnect]  If you do use ActiveMQ, there is a page [ActiveMq dedicated to its install].  
 
+With Ruby and gems installed, get rails, daemons, and stomp gems
+{{{
+sudo gem install rails
+sudo gem install daemons
+sudo gem install stomp
+}}}
+
+To install the plugin into a Rails app:
 {{{
 script/plugin install http://activemessaging.googlecode.com/svn/trunk/plugins/activemessaging
 }}}
