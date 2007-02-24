@@ -10,7 +10,9 @@ To develop applications using ActiveMessaging you need the following prerequisit
 
 == Installing ==
 
-Select from the [http://stomp.codehaus.org/Brokers list of brokers that speak Stomp], the recommended choice is ActiveMQ configured with the Stomp listener.  [http://stomp.codehaus.org/StompConnect StompConnect]  If you do use ActiveMQ, there is a page [ActiveMq dedicated to its install].  
+Select from the [http://stomp.codehaus.org/Brokers list of brokers that speak Stomp], the recommended choice is ActiveMQ configured with the Stomp listener..
+[http://stomp.codehaus.org/StompConnect StompConnect] exposes any JMS broker as a Stomp broker.
+If you do use ActiveMQ, there is a page [ActiveMq dedicated to its install and configuration].  
 
 With Ruby and gems installed, get rails, daemons, and stomp gems
 {{{
