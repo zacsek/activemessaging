@@ -59,7 +59,7 @@ Here are the methods available on the 'ActiveMessaging::Gateway' while in the 'd
     ./script/poller start -- process-group=my_group
 }}}
 
-=== Poller daemon ===
+=== poller ===
 
 Included with the procesor generator is the creation of a 'script/poller' script.
 This script uses the [http://daemons.rubyforge.org ruby daemons library] to turn the poller.rb into a daemon.  You need to have the daemon gem for this to work:
@@ -107,3 +107,9 @@ Common options:
     -h, --help                       Show this message
         --version                    Show version
 }}}
+
+Additional options can be passed to the underlying script, poller.rb in this case, by using a '--' separator.  At the moment the only supported option is the process_group, mentioned above.
+
+If you start the poller without specifying a process group, then all processors will be subscribed and run.
+
+If you start with a 'script/poller run -- process-group=critical_group' command line arguement, then only the processors added to that group will be run.
