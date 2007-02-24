@@ -58,3 +58,52 @@ Here are the methods available on the 'ActiveMessaging::Gateway' while in the 'd
 {{{
     ./script/poller start -- process-group=my_group
 }}}
+
+=== Poller daemon ===
+
+Included with the procesor generator is the creation of a 'script/poller' script.
+This script uses the [http://daemons.rubyforge.org ruby daemons library] to turn the poller.rb into a daemon.  You need to have the daemon gem for this to work:
+{{{
+sudo gem install daemons
+}}}
+
+It is configured to allow running multiple instances, and to create a 'monitor' for each process which will restart it if the poller process ends.  The log file for the poller and the pid files are all put under the 'tmp' directory.
+
+Daemon options can be configured in the 'script/poller' file's options hash:
+{{{
+options = {
+  :app_name   => "poller",
+  :dir_mode   => :normal,
+  :dir        => tmp_dir,     #change this to move the pid and poller.output files
+  :multiple   => true,        #change this to allow only one instance of the script
+  :ontop      => false,
+  :mode       => :load,
+  :backtrace  => true,
+  :monitor    => true,        #change this to turn off the monitor process
+  :log_output => true
+}
+}}}
+
+See the [http://daemons.rubyforge.org/ ruby daemon documentation] for more information.
+
+Here are the available options when running 'script/poller':
+{{{
+> ./script/poller -h
+Usage: poller <command> <options> -- <application options>
+
+* where <command> is one of:
+  start         start an instance of the application
+  stop          stop all instances of the application
+  restart       stop all instances and restart them afterwards
+  run           start the application and stay on top
+  zap           set the application to a stopped state
+
+* and where <options> may contain several of the following:
+
+    -t, --ontop                      Stay on top (does not daemonize)
+    -f, --force                      Force operation
+
+Common options:
+    -h, --help                       Show this message
+        --version                    Show version
+}}}
