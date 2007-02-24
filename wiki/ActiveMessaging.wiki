@@ -19,9 +19,13 @@ end
 
 = Getting Started =
 
+Here are the best beginner guides:
  * [Installation] - get ActiveMessaging, stomp, activemq
  * [TenMinuteIntroduction] - quick intro on sending and receiving
+
+Then after you get through that, learn more wih these:
  * [Configuration] - more advanced configuration described
+ * [ExceptionHandling] - advice and recipes for better exception handling
 
 = Developers =
 
