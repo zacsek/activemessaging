@@ -112,4 +112,4 @@ Additional options can be passed to the underlying script, poller.rb in this cas
 
 If you start the poller without specifying a process group, then all processors will be subscribed and run.
 
-If you start with a 'script/poller run -- process-group=critical_group' command line arguement, then only the processors added to that group will be run.
+If you start with a 'script/poller run -- process-group=critical_group' command line argument, then only the processors added to that group will be run.
