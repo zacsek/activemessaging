@@ -47,3 +47,14 @@ Here are the methods available on the 'ActiveMessaging::Gateway' while in the 'd
 *processor_group* ['group name'] ['array of processors']
     A processor group is a way to run the poller to only execute a subset of the processors by passing the name of the group in the poller command line arguments.
     
+    You specify the name of the processor as its underscored lowercase version.  So if you have a FooBarProcessor and BarFooProcessor in a processor group, it would look like this:
+{{{
+    ActiveMessaging::Gateway.define do |s|
+      ...
+      s.processor_group :my_group, :foo_bar_processor, :bar_foo_processor
+    end
+}}}
+    The processor group is passed into the poller like the following:
+{{{
+    ./script/poller start -- process-group=my_group
+}}}
