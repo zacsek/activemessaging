@@ -15,7 +15,28 @@ test:
 production:
 }}}
 
-By default, a13g will create a single connection to a single broker as configured within the environment section.  This 'default' broker configuration will be used for all queues  unless a different broker is specified for the queue.  More about this later.  
+By default, a13g will create a single connection to a single broker as configured within the environment section.  This 'default' broker configuration will be used for all queues  unless a different broker is specified for the queue.
+
+It is possible to define multiple connections in the broker.yml.  This is done by adding another level to the yaml file, giving the new connection info a name, for example, to add a 'foo' connection and a 'bar' connection configuration to the development section, do the following:
+
+{{{
+development:
+    adapter: stomp
+    host: localhost
+    reliable: true
+
+    foo:
+        adapter: asqs
+        access_key_id: XXXXXXXXXXXXXXXXXXXX
+        secret_access_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+
+    bar:
+        adapter: wmq
+        q_mgr_name: my_queue_manager
+
+}}}
+
+In the above configuration, the stomp adapter is the default, and will be used for queues that have no other broker name specified, but foo and bar are also defined, and can be specified as the broker to use for any queue in a messaging.rb queue statement (see syntax below).
 
 Each adapter has it's own defaults and possible configuration values, but all of them start with an 'adapter: something' value to identify which adapter should be used to create the connection based on all the remaining configuration parameters.
 
@@ -99,6 +120,16 @@ Here are the methods available on the 'ActiveMessaging::Gateway' while in the 'd
     'headers' hash is how you can pass in the default headers that should be applied to each message sent to this destination, can be any pair.  The default includes :persistent => true, even if nothing is specified, in order to make sure messages will be saved by ActiveMQ when sent to a destination.  Other header values mapped to JMS headers are described in the ActiveMQ documentation, http://activemq.apache.org/stomp.html.
 
     'broker name' string is the name of the broker connection configuration in 'broker.yml' to use for this queue, both for sending to and requesting messages from.  When not specified, uses the default broker connection configuration for the environment.
+
+Here is an example of a 'bar_queue' using the default broker connection, and the 'foo_queue' specified to use the 'foo' Amazon SQS broker defined in broker.yml:
+{{{
+ActiveMessaging::Gateway.define do |s|
+  s.queue :bar_queue, '/topic/bar.queue'
+  s.queue :foo_queue, 'foosqsqueue', {}, 'foo'
+end
+}}}
+
+With this definition, messages sent to :foo_queue will be sent to Amazon SQS as configured for foo, and the poller will create a connection to Amazon SQS and a thread to receive messages for foo if a processor subscribes to the foo_queue.
 
 *connection_configuration=* ['connection configuration', hash]
     You can use this method to override the configuration loaded for the connection in the 'config/broker.yml'.  All the same hash values can be set, the keys should be set as symbols.  You usually won't need this, but it could be useful for some environments, such as loading configuration from the database, or some other external resource.
