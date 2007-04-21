@@ -4,7 +4,23 @@ The dials to turn, and switches to flip, to make a13g behave the way you want it
 
 == broker.yml ==
 
-When you run the processor generator for the first time, a default 'config/broker.yml' is created.  Its purpose is to configure the message broker connection for each environment, much the same as 'database.yml' for ActiveRecord.  Here are the defaults:
+When you run the processor generator for the first time, a default 'config/broker.yml' is created.  Its purpose is to configure the message broker connection for each environment, much the same as 'database.yml' for ActiveRecord.  
+
+Like database.yml, the top level of the yaml file is divided by environment, and the  section that matches the RAILS_ENV environment value is the one that gets loaded:
+{{{
+development:
+...
+test:
+...
+production:
+}}}
+
+By default, a13g will create a single connection to a single broker as configured within the environment section.  This 'default' broker configuration will be used for all queues  unless a different broker is specified for the queue.  More about this later.  
+
+Each adapter has it's own defaults and possible configuration values, but all of them start with an 'adapter: something' value to identify which adapter should be used to create the connection based on all the remaining configuration parameters.
+
+=== Stomp ===
+Here are the defaults for an example stomp connection. With the defaults below, all you really have to specify is the adapter as stomp and you are ready to go:
 {{{
 development:
     adapter: stomp
@@ -14,6 +30,32 @@ development:
     port: 61613
     reliable: true
     reconnectDelay: 5
+}}}
+
+=== Amazon SQS ===
+For Amazon SQS, you must specify a valid access key and secret key, all other values below are defaults, and optional.
+{{{
+development:
+    adapter: asqs
+    access_key_id: XXXXXXXXXXXXXXXXXXXX
+    secret_access_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    host: queue.amazonaws.com
+    port 80
+    reliable: true
+    reconnectDelay: 5
+    aws_version: 2006-04-01 
+    content_type: text/plain
+    poll_interval: 1
+    cache_queue_list: true
+}}}
+
+=== Websphere MQ ===
+For Websphere MQ, at a minimum you need to specify the queue manager name, 'q_mgr_name', all other parameters are passed in to the underlying WMQ connection, see the WMQ::QueueManager connection [http://rubywmq.rubyforge.org/doc/classes/WMQ/QueueManager.html api docs].
+{{{
+development:
+    adapter: wmq
+    q_mgr_name: ""
+    poll_interval: .1
 }}}
 
 Here's what you can do with these options:
