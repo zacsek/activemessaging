@@ -2,7 +2,9 @@
 
 = ActiveMessaging =
 
-!ActiveMessaging is an attempt to bring the simplicity and elegance of rails development to the world of messaging. Messaging, (or event-driven architecture) is widely used for enterprise integration, with frameworks such as Java's JMS, and products such as ActiveMQ, Tibco, Amazon Simple Queue Service, IBM MQSeries /Websphere MQ etc.
+!ActiveMessaging is an attempt to bring the simplicity and elegance of rails development to the world of messaging. Messaging, (or event-driven architecture) is widely used for enterprise integration, with frameworks such as Java's JMS, and products such as ActiveMQ, Tibco, IBM MQSeries, etc.
+
+ActiveMessaging is a generic framework to ease using messaging, but is not tied to any particular messaging system - in fact, it now has support for Stomp, JMS (using StompConnect), WebSphere MQ, and Amazon Simple Queue Service.
 
 Here's a sample of a processor class that handles incoming messages:
 {{{
@@ -20,7 +22,8 @@ end
 = Getting Started =
 
 Here are the best beginner guides:
- * [Installation] - get ActiveMessaging, stomp, activemq
+ * [http://www.infoq.com/articles/intro-active-messaging-rails Intro to ActiveMessaging on InfoQ] - Still mostly current and complete intro.
+ * [Installation] - get ActiveMessaging, stomp, and activemq
  * [TenMinuteIntroduction] - quick intro on sending and receiving
 
 Then after you get through that, learn more wih these:
