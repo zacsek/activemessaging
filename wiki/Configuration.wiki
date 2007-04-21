@@ -32,6 +32,15 @@ development:
     reconnectDelay: 5
 }}}
 
+Here's what you can do with these options:
+  * 'login' - set a login to use when connecting to the broker.
+  * 'passcode' - set a passcode to use when connecting to the broker.
+  * 'host' - address of the broker to connect to for both local and remote brokers.
+  * 'port' - port of the broker address to connect to, 61613 seems to be Stomp default, certainly is in ActiveMQ's implementation.
+  * 'reliable' - 'true' or 'false', controls whether or not the connection should try and reconnect when the broker is or becomes unavailable.  If true, will retry until it connects or is stopped.  Should almost always be 'true', except for unit testing perhaps.
+  * 'reconnectDelay' - integer, number of seconds to wait between reconnect attempts, only meaningful when 'reliable' is 'true'.
+
+
 === Amazon SQS ===
 For Amazon SQS, you must specify a valid access key and secret key, all other values below are defaults, and optional.
 {{{
@@ -49,6 +58,18 @@ development:
     cache_queue_list: true
 }}}
 
+Here's what you can do with these options:
+  * 'access_key_id' - AWS access key id, get this from amazon for your account.
+  * 'secret_access_key' - AWS secret access key, get this from amazon for your account.
+  * 'host' - domain/url to the SQS service for http requests.
+  * 'port' - port for http connections to the SQS service. 
+  * 'reliable' - 'true' or 'false', controls whether or not the connection should retry transmissions to SQS.
+  * 'reconnectDelay' - integer, number of seconds to wait between transmission attempts, only meaningful when 'reliable' is 'true'.
+  * aws_version - used in connecting to AWS, this 'constant' is the current version of the sqs service.
+  * content_type - for all messages to SQS, this is the content type of the http request/post.
+  * poll_interval - to receive messages, amount of time to wait between checking all subscribed queues for waiting messages.
+  * cache_queue_list - a performance enhancement, the adapter will load and keep a list of  valid queues to use for later send and receive calls, or can reload this list each time a queue is accessed to ensure queue is still there and available.
+
 === Websphere MQ ===
 For Websphere MQ, at a minimum you need to specify the queue manager name, 'q_mgr_name', all other parameters are passed in to the underlying WMQ connection, see the WMQ::QueueManager connection [http://rubywmq.rubyforge.org/doc/classes/WMQ/QueueManager.html api docs].
 {{{
@@ -59,14 +80,8 @@ development:
 }}}
 
 Here's what you can do with these options:
-  * 'adapter' - used to select which adapter is used. At the moment, 'stomp' is your only real choice, though some logging and mock adapters will be added soon to aid in testing.
-  * 'login' - set a login to use when connecting to the broker.
-  * 'passcode' - set a passcode to use when connecting to the broker.
-  * 'host' - address of the broker to connect to for both local and remote brokers.
-  * 'port' - port of the broker address to connect to, 61613 seems to be Stomp default, certainly is in ActiveMQ's implementation.
-  * 'reliable' - 'true' or 'false', controls whether or not the connection should try and reconnect when the broker is or becomes unavailable.  If true, will retry until it connects or is stopped.  Should almost always be 'true', except for unit testing perhaps.
-  * 'reconnectDelay' - integer, number of seconds to wait between reconnect attempts, only meaningful when 'reliable' is 'true'.
-
+  * q_mgr_nme - name of the queue manager to connect to.
+  * poll_interval - to receive messages, amount of time to wait between checking all subscribed queues for waiting messages.
 
 == messaging.rb ==
 
