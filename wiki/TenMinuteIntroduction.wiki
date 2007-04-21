@@ -2,7 +2,7 @@
 
 = Ten Minute Introduction =
 
-We create a simple message consumer to receive messages, and a rails web controller that allows you to send a message when you click a button.
+We create a simple message consumer to receive messages, and a rails web controller that allows you to send a message when you click a button.  This example uses the stomp adapter and an activemq message broker, but other brokers and adapters are now available.
 
 = Steps =
 
