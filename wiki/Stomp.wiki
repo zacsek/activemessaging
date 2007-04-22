@@ -1,4 +1,4 @@
-#summary Protocol currently supported by ActiveMessaging
+#summary How to use the Stomp protocol
 = Stomp =
 
 ActiveMessaging uses this protocol to send and receive messages on ActiveMQ.
