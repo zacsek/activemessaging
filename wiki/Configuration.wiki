@@ -70,7 +70,7 @@ development:
     access_key_id: XXXXXXXXXXXXXXXXXXXX
     secret_access_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     host: queue.amazonaws.com
-    port 80
+    port: 80
     reliable: true
     reconnectDelay: 5
     aws_version: 2006-04-01 
