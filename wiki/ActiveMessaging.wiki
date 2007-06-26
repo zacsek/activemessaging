@@ -32,8 +32,9 @@ Then after you get through that, learn more wih these:
 
 = ActiveMessaging articles elsewhere =
  * [http://www.infoq.com/articles/intro-active-messaging-rails Intro to ActiveMessaging on InfoQ] - Still mostly current/complete intro.
+ * [http://beechbonanza.blogspot.com/2007/06/asynchronous-messaging-with-rails.html Asynchronous Messaging with Rails] - example and explanation of using a13g with AR observers, discussion of a13g as alternative to REST integration. 
  * [http://notdennisbyrne.blogspot.com/2007/06/integrating-rails-and-activemq-with.html Integrating Rails and ActiveMQ with ActiveMessaging/REST] - uses ActiveMQ's demo chat app on jetty interacting with a rails app using a13g.
-
+ * [http://blog.snowonrails.com/articles/2007/05/31/how-to-build-a-mini-youtube-using-activemessaging-plugin-and-amazon-s3  How to build a mini youtube using activemessaging plugin and amazon s3] - title says it all.
 
 = Developers =
 
