@@ -8,7 +8,7 @@ ActiveMQ is an open source Java JMS message queue. It supports the Stomp protoco
 To get a Stomp-talking ActiveMQ on your developer box, try this  
 page: [http://www.activemq.org/site/getting-started.html Getting Started with ActiveMQ]
 
-[http://people.apache.org/~jstrachan/ James Strachan] of Apache ActiveMQ greatness has been kind enough to patch up an issue with Stomp to clean up connections when they end improperly. So use a 4.2 snapshot, and one after 1/19/2007.  It needs to include [http://svn.apache.org/viewvc?view=rev&revision=497898 this change list]. As of 5/12007, this has not been added to the 4.1 code base, and is absent from the 4.1.1 release.
+[http://people.apache.org/~jstrachan/ James Strachan] of Apache ActiveMQ greatness has been kind enough to patch up an issue with Stomp to clean up connections when they end improperly. So use a 5.0 snapshot (previously 4.2 - now 5.0 will be the next release), and one after 1/19/2007.  It needs to include [http://svn.apache.org/viewvc?view=rev&revision=497898 this change list]. As of 5/12007, this has not been added to the 4.1 code base, and is absent from the 4.1.1 release.
 
 == Configure ActiveMQ ==
 
