@@ -26,6 +26,10 @@ This is a service provided by amazon, so you don't run the broker, but you do ne
 ==== Websphere MQ ====
 Formerly IBM MQ Series, Websphere MQ is a commercial messaging broker.  Sylvain Perez has provided a free adapter for this service based on the wmq gem, but you still need to install Websphere MQ to use it. [http://www-306.ibm.com/software/integration/wmq/ Websphere MQ].
  
+==== ReliableMessaging ====
+ReliableMessaging is an all Ruby message broker providing a simple API, transactions, different delivery modes, selectors, and file or mysql based storage.  Easy to install and use, it's an all Ruby broker option.
+
+
 === Gems ===
 With Ruby and gems installed, get rails and daemons.  You will also need to get the stomp or wmq gems depending on which broker you are using.
 {{{
@@ -35,6 +39,7 @@ sudo gem install daemons
 #optional
 sudo gem install stomp
 sudo gem install wmq
+sudo gem install reliable-msg
 }}}
 
 === Plugin ===
