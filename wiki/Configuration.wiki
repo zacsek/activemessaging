@@ -104,14 +104,18 @@ Here's what you can do with these options:
   * q_mgr_name - name of the queue manager to connect to.
   * poll_interval - to receive messages, amount of time to wait between checking all subscribed queues for waiting messages.
 
+=== ReliableMessaging ===
+
+TBD
+
 == messaging.rb ==
 
 The main place for configuring your messaging environment is 'config/messaging.rb', also created when the generator is first run.
 
 Here are the methods available on the 'ActiveMessaging::Gateway' while in the 'define' block.  It bears mentioning that since this is just a ruby block, you can do whatever the language and Rails environment allow to solve your own unique issues.
 
-*queue* ['name', symbol for destination] ['destination', string] ['headers', hash of defaults for send] ['broker name', string to specify broker connection info to use]
-    The method is a bit of a misnomer, you use this to define destinations - be they queues or topics or whatever else.  
+*destination* ['name', symbol for destination] ['destination', string] ['headers', hash of defaults for send] ['broker name', string to specify broker connection info to use]
+    You use this method to define destinations - be they queues or topics or whatever else.  
 
     'name' should be a symbol, and is the logical name for this destination that will be used in the code.  
 
