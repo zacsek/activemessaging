@@ -50,8 +50,3 @@ svn checkout http://activemessaging.googlecode.com/svn/trunk/ activemessaging
 Best bet is the google groups mailing list:
 
 http://groups.google.com/group/activemessaging-discuss
-
-ou can also try the public Campfire chat room here:
-
-https://thoughtworks.campfirenow.com/c94cd
-Please provide your full real name.
