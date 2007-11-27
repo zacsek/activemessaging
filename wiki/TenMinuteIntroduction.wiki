@@ -56,7 +56,7 @@ end
 If the generator created a new 'config/messaging.rb', it will have by default the queue symbol name to Stomp destination mapping:
 
 {{{
-    s.queue :hello_world, '/queue/HelloWorld'
+    s.destination :hello_world, '/queue/HelloWorld'
 }}}
 
 Create a controller with an index action. We will use this to send our messages
