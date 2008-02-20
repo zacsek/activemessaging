@@ -1,7 +1,0 @@
-Description:
-    Generates a stub ActiveMassaging Processor.
-
-Examples:
-    ./script/generate processor HelloWorld
-    will create:
-        /app/processors/hello_world_processor.rb
