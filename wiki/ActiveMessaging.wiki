@@ -25,6 +25,7 @@ end
 Here are the best beginner guides:
  * [Installation] - get ActiveMessaging, stomp, and activemq
  * [TenMinuteIntroduction] - quick intro on sending and receiving
+ * [UsingActiveMessagingAsGemInRails] - how to install ActiveMessaging in Rails as a gem.
 
 Then after you get through that, learn more wih these:
  * [Configuration] - more advanced configuration described
