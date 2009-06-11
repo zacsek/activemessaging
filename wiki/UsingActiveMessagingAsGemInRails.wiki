@@ -11,11 +11,20 @@ You can of course use ActiveMessaging as a regular Rails plugin, as explained in
 
 = Howto =
 
-* Define ActiveMessaging as a required gem in you config/environment.rb file:
+* Define ActiveMessaging as a required gem in your config/environment.rb file:
 {{{ 
 Rails::Initializer.run do |config|
   ...
   config.gem 'activemessaging'
+  ...
+end
+}}}
+
+* Add gems for the desired brokers:
+{{{ 
+Rails::Initializer.run do |config|
+  ...
+  config.gem 'stomp'
   ...
 end
 }}}
