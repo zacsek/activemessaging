@@ -32,10 +32,6 @@ end
 * Install the required gems if they aren't installed already
 {{{ 
 rake gems:install
-  ...
-  config.gem 'activemessaging'
-  ...
-end
 }}}
 
 * Automatic links to other wiki pages
