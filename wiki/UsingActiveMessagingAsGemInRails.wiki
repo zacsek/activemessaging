@@ -34,4 +34,4 @@ end
 rake gems:install
 }}}
 
-* Automatic links to other wiki pages
+* You should now be ready to go!  Try the TenMinuteIntroduction!  Just skip the "Add the activemessaging plugin" step. 
