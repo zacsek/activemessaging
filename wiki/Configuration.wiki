@@ -91,6 +91,25 @@ Here's what you can do with these options:
   * poll_interval - to receive messages, amount of time to wait between checking all subscribed queues for waiting messages.
   * cache_queue_list - a performance enhancement, the adapter will load and keep a list of  valid queues to use for later send and receive calls, or can reload this list each time a queue is accessed to ensure queue is still there and available.
 
+
+=== Beanstalk ===
+For Beanstalk, you need to have the gem beanstalk client gem installed (see here for more information: http://beanstalk.rubyforge.org/).
+{{{
+sudo gem install beanstalk-client
+}}}
+
+{{{
+development:
+    adapter: beanstalk
+    host: localhost
+    port: 
+}}}
+
+Here's what you can do with these options:
+  * 'host' - domain/url to the beanstalkd service.
+  * 'port' - port for connections to the beanstalkd service. 
+
+
 === Websphere MQ ===
 For Websphere MQ, at a minimum you need to specify the queue manager name, 'q_mgr_name', all other parameters are passed in to the underlying WMQ connection, see the WMQ::QueueManager connection [http://rubywmq.rubyforge.org/doc/classes/WMQ/QueueManager.html api docs].
 {{{
